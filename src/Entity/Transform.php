@@ -2,14 +2,7 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity(repositoryClass="App\Repository\TransformRepository")
- */
-
-
-interface transform
+interface Transform
 {
     public function transform(string $string) : string;
 }

@@ -12,7 +12,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  * @method FileLogger[]    findAll()
  * @method FileLogger[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class LoggerRepository extends ServiceEntityRepository
+class FileLoggerRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -25,10 +25,10 @@ class LoggerRepository extends ServiceEntityRepository
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
+            ->orderBy('f.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -39,8 +39,8 @@ class LoggerRepository extends ServiceEntityRepository
     /*
     public function findOneBySomeField($value): ?FileLogger
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
