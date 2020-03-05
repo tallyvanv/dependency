@@ -4,27 +4,31 @@ namespace App\Services;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FileLoggerRepository")
  */
 class FileLogger
 {
+    private $log;
 
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * FileLogger constructor.
      */
-    private $id;
-
-    public function getId(): ?int
+    public function __construct()
     {
-        return $this->id;
+        $this->log = new Logger("info");
     }
 
-    public function logFile($message)
+    public function logFile()
     {
-        return file_put_contents(__DIR__ . '/logs/log.info', $message, FILE_APPEND);
+        return $this->log->pushHandler(new StreamHandler(__DIR__ . '/logs/log.info', Logger::INFO));
+    }
+
+    public function passMessage($message)
+    {
+        return $this->log->info($message);
     }
 }

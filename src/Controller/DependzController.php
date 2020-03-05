@@ -20,7 +20,8 @@ class DependzController extends AbstractController
         $output = $transform->change;
 
         $log = new FileLogger();
-        $log->logFile("\n".$output);
+        $log->logFile();
+        $log->passMessage($output);
 
         return $this->render('dependz/index.html.twig', [
             'controller_name' => 'DependzController',
