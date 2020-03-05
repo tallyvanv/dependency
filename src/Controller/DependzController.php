@@ -2,11 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Capitalize;
-use App\Entity\Dasher;
-use App\Entity\DoNothingString;
-use App\Entity\Master;
-use App\Entity\FileLogger;
+use App\Services\Master;
+use App\Services\FileLogger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,7 +20,7 @@ class DependzController extends AbstractController
         $output = $transform->change;
 
         $log = new FileLogger();
-        $log->logFile($output);
+        $log->logFile("\n".$output);
 
         return $this->render('dependz/index.html.twig', [
             'controller_name' => 'DependzController',

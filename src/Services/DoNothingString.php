@@ -1,8 +1,7 @@
 <?php
 
 
-namespace App\Entity;
-
+namespace App\Services;
 
 class DoNothingString implements Transform
 {

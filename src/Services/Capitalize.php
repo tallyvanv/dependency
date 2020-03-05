@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Entity;
+namespace App\Services;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * @ORM\Entity(repositoryClass="App\Repository\DasherRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CapitalizeRepository")
  */
-class Dasher implements Transform
+
+class Capitalize implements Transform
 {
     /**
      * @ORM\Id()
@@ -25,12 +25,8 @@ class Dasher implements Transform
     public function transform(string $string): string
     {
         $newStr = '';
-        foreach(str_split($string) as $index => $letter) {
-            if ($letter === " "){
-                $newStr .= "-";
-            } else {
-                $newStr .= $letter;
-            }
+        foreach (str_split($string) as $index => $letter) {
+            $newStr .= ($index % 2) ? strtolower($letter) : strtoupper($letter);
         }
         return $newStr;
     }

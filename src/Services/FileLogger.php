@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Services;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,6 +25,6 @@ class FileLogger
 
     public function logFile($message)
     {
-        return file_put_contents(__DIR__.'/logs/log.info', $message, FILE_APPEND);
+        return file_put_contents(__DIR__ . '/logs/log.info', $message, FILE_APPEND);
     }
 }
